@@ -1,0 +1,560 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>当番って、何のため？ ── 3・4・5歳児の当番活動</title>
+<style>
+  :root {
+    --page-bg: #EAE7DF;
+    --paper: #F8F6F1;
+    --surface: #FFFFFF;
+    --grid: rgba(35, 48, 58, 0.045);
+    --ink: #23303A;
+    --ink-soft: #58676F;
+    --ink-faint: #8A959B;
+    --hair: #E4E0D7;
+
+    --age3: #C87E14;      /* 3歳 琥珀 */
+    --age3-bg: #FBEED4;
+    --age4: #CE5145;      /* 4歳 珊瑚 */
+    --age4-bg: #FADFDA;
+    --age5: #1F8476;      /* 5歳 青緑 */
+    --age5-bg: #D7EEE9;
+
+    --band: #26333D;
+    --band-ink: #F4F1EA;
+
+    --font-display: "Hiragino Maru Gothic ProN", "Hiragino Maru Gothic Pro", "ヒラギノ丸ゴ ProN W4", "Yu Gothic Medium", "YuGothic", "Noto Sans JP", "Meiryo", sans-serif;
+    --font-body: "Hiragino Kaku Gothic ProN", "Hiragino Sans", "Yu Gothic", "YuGothic", "Noto Sans JP", "Meiryo", sans-serif;
+    --font-num: "Helvetica Neue", "Arial", sans-serif;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --page-bg: #0E1113;
+      --paper: #181D20;
+      --surface: #212829;
+      --grid: rgba(230, 236, 238, 0.04);
+      --ink: #E9E6DE;
+      --ink-soft: #A7B0B2;
+      --ink-faint: #79837f;
+      --hair: #323A3C;
+
+      --age3: #E9AC43;
+      --age3-bg: #382c14;
+      --age4: #E97C70;
+      --age4-bg: #3a2320;
+      --age5: #46BCAB;
+      --age5-bg: #12332f;
+
+      --band: #10161a;
+      --band-ink: #EEEAE1;
+    }
+  }
+  :root[data-theme="light"] {
+    --page-bg: #EAE7DF; --paper: #F8F6F1; --surface: #FFFFFF;
+    --grid: rgba(35,48,58,.045); --ink: #23303A; --ink-soft: #58676F; --ink-faint:#8A959B; --hair:#E4E0D7;
+    --age3:#C87E14; --age3-bg:#FBEED4; --age4:#CE5145; --age4-bg:#FADFDA; --age5:#1F8476; --age5-bg:#D7EEE9;
+    --band:#26333D; --band-ink:#F4F1EA;
+  }
+  :root[data-theme="dark"] {
+    --page-bg:#0E1113; --paper:#181D20; --surface:#212829;
+    --grid: rgba(230,236,238,.04); --ink:#E9E6DE; --ink-soft:#A7B0B2; --ink-faint:#79837f; --hair:#323A3C;
+    --age3:#E9AC43; --age3-bg:#382c14; --age4:#E97C70; --age4-bg:#3a2320; --age5:#46BCAB; --age5-bg:#12332f;
+    --band:#10161a; --band-ink:#EEEAE1;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--page-bg);
+    color: var(--ink);
+    font-family: var(--font-body);
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+    padding: clamp(14px, 3vw, 44px);
+  }
+
+  .poster {
+    max-width: 1060px;
+    margin: 0 auto;
+    background-color: var(--paper);
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 30px 30px;
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+    box-shadow: 0 22px 60px -30px rgba(20,28,34,.5);
+    padding: clamp(22px, 4vw, 52px);
+    display: flex;
+    flex-direction: column;
+    gap: clamp(24px, 3.4vw, 40px);
+  }
+
+  .eyebrow {
+    font-family: var(--font-body);
+    font-size: 12.5px;
+    font-weight: 700;
+    letter-spacing: .16em;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+  }
+  .eyebrow::before {
+    content: "";
+    width: 26px; height: 2px;
+    background: linear-gradient(90deg, var(--age3), var(--age4), var(--age5));
+    display: inline-block;
+  }
+
+  /* ---------- Header ---------- */
+  .head { display: flex; flex-direction: column; gap: 16px; }
+  h1 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(38px, 6.4vw, 68px);
+    line-height: 1.08;
+    letter-spacing: .01em;
+    margin: 0;
+    text-wrap: balance;
+  }
+  h1 .q { color: var(--age4); }
+  .subtitle {
+    font-family: var(--font-display);
+    font-weight: 600;
+    font-size: clamp(16px, 2.1vw, 21px);
+    color: var(--ink);
+    margin: 0;
+  }
+  .method {
+    font-size: 14px;
+    color: var(--ink-soft);
+    max-width: 62ch;
+    line-height: 1.72;
+    border-left: 3px solid var(--hair);
+    padding: 2px 0 2px 16px;
+  }
+  .method b { color: var(--ink); font-weight: 700; }
+
+  /* ---------- Background strip ---------- */
+  .bg-strip { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .fact {
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 8px;
+    padding: 16px 18px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .fact .k {
+    font-size: 11.5px; font-weight: 700; letter-spacing: .12em;
+    color: var(--ink-faint);
+  }
+  .fact p { margin: 0; font-size: 14.5px; line-height: 1.66; }
+  .fact .hi { font-family: var(--font-display); font-weight: 700; }
+
+  /* ---------- Section heading ---------- */
+  .sec-head { display: flex; flex-direction: column; gap: 4px; }
+  .sec-head h2 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: clamp(20px, 2.7vw, 27px);
+    margin: 0; letter-spacing: .01em;
+  }
+  .sec-head .lead { font-size: 14px; color: var(--ink-soft); margin: 0; line-height: 1.6; }
+
+  /* ---------- Age columns ---------- */
+  .ages { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+  .age {
+    --c: var(--ink);
+    --cbg: var(--surface);
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-top: 5px solid var(--c);
+    border-radius: 8px;
+    padding: 18px 18px 20px;
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .age.a3 { --c: var(--age3); --cbg: var(--age3-bg); }
+  .age.a4 { --c: var(--age4); --cbg: var(--age4-bg); }
+  .age.a5 { --c: var(--age5); --cbg: var(--age5-bg); }
+
+  .age-top { display: flex; align-items: baseline; justify-content: space-between; gap: 8px; }
+  .num {
+    font-family: var(--font-num);
+    font-weight: 800;
+    font-size: 64px;
+    line-height: .82;
+    color: var(--c);
+    letter-spacing: -.02em;
+  }
+  .num .sai { font-family: var(--font-display); font-size: 20px; font-weight: 700; margin-left: 2px; }
+  .tag {
+    align-self: center;
+    background: var(--cbg);
+    color: var(--c);
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 14px;
+    padding: 5px 12px;
+    border-radius: 100px;
+    white-space: nowrap;
+  }
+  .stance {
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15.5px;
+    color: var(--ink);
+    margin: -4px 0 0;
+    padding-bottom: 12px;
+    border-bottom: 1px dashed var(--hair);
+  }
+  .field { display: flex; flex-direction: column; gap: 4px; }
+  .field .label {
+    font-size: 11px; font-weight: 700; letter-spacing: .1em; color: var(--ink-faint);
+  }
+  .field p { margin: 0; font-size: 13.5px; line-height: 1.62; color: var(--ink); }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .chips span {
+    font-size: 12px; font-weight: 600;
+    background: var(--cbg); color: var(--c);
+    padding: 3px 9px; border-radius: 5px;
+  }
+  .risk {
+    display: flex; gap: 8px; align-items: flex-start;
+    background: var(--paper);
+    border: 1px solid var(--hair);
+    border-radius: 6px;
+    padding: 9px 11px;
+    font-size: 12.5px; line-height: 1.55; color: var(--ink-soft);
+  }
+  .risk .rl {
+    flex: none; font-weight: 700; color: var(--c); font-size: 11px; letter-spacing:.06em;
+    padding-top: 1px;
+  }
+
+  /* ---------- 総合考察 axes ---------- */
+  .axes { display: flex; flex-direction: column; gap: 14px; }
+  .axis {
+    display: grid;
+    grid-template-columns: 150px 1fr;
+    gap: 18px;
+    align-items: center;
+    background: var(--surface);
+    border: 1px solid var(--hair);
+    border-radius: 8px;
+    padding: 14px 18px;
+  }
+  .axis-name { display: flex; flex-direction: column; gap: 3px; }
+  .axis-name .n { font-family: var(--font-display); font-weight: 800; font-size: 15px; }
+  .axis-name .d { font-size: 11.5px; color: var(--ink-soft); line-height: 1.4; }
+  .track {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr auto 1fr;
+    align-items: center;
+    gap: 8px;
+  }
+  .stop {
+    text-align: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: 15px;
+    padding: 9px 6px;
+    border-radius: 7px;
+    border: 1.5px solid var(--c);
+    color: var(--c);
+    background: var(--cbg);
+  }
+  .stop.s3 { --c: var(--age3); --cbg: var(--age3-bg); }
+  .stop.s4 { --c: var(--age4); --cbg: var(--age4-bg); }
+  .stop.s5 { --c: var(--age5); --cbg: var(--age5-bg); }
+  .arw {
+    font-family: var(--font-num);
+    font-weight: 700;
+    color: var(--ink-faint);
+    font-size: 18px;
+    text-align: center;
+  }
+  .aux { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 2px; }
+  .aux div {
+    font-size: 12.5px; line-height: 1.55; color: var(--ink-soft);
+    padding-left: 12px; border-left: 2px solid var(--hair);
+  }
+  .aux b { color: var(--ink); font-family: var(--font-display); }
+
+  /* ---------- Conclusion band ---------- */
+  .band {
+    background: var(--band);
+    color: var(--band-ink);
+    border-radius: 10px;
+    padding: clamp(20px, 3vw, 30px);
+    display: flex; flex-direction: column; gap: 16px;
+    position: relative; overflow: hidden;
+  }
+  .band::before {
+    content: ""; position: absolute; inset: 0 0 auto 0; height: 5px;
+    background: linear-gradient(90deg, var(--age3), var(--age4), var(--age5));
+  }
+  .band .kicker { font-size: 12px; font-weight: 700; letter-spacing: .16em; opacity: .72; }
+  .band h2 {
+    font-family: var(--font-display); font-weight: 800; margin: 0;
+    font-size: clamp(20px, 3vw, 28px); line-height: 1.3; text-wrap: balance;
+  }
+  .band h2 em { font-style: normal; color: var(--age3); }
+  .verdict { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+  .vcard {
+    background: rgba(255,255,255,.06);
+    border: 1px solid rgba(255,255,255,.14);
+    border-radius: 8px; padding: 14px 16px;
+    display: flex; flex-direction: column; gap: 7px;
+  }
+  .vcard .vt { font-family: var(--font-display); font-weight: 700; font-size: 15px; }
+  .vcard.bad .vt { color: #E9A9A0; }
+  .vcard.good .vt { color: #7BD3C4; }
+  .vcard p { margin: 0; font-size: 13px; line-height: 1.6; opacity: .92; }
+  .vcard ol { margin: 4px 0 0; padding-left: 1.15em; font-size: 13px; line-height: 1.62; }
+  .vcard li { margin-bottom: 2px; }
+
+  /* ---------- Questions ---------- */
+  .ask {
+    background: var(--surface);
+    border: 1px dashed var(--age4);
+    border-radius: 10px;
+    padding: clamp(18px, 2.6vw, 26px);
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .ask .sec-head h2 { color: var(--ink); }
+  .qgrid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px 22px; }
+  .q-item { display: flex; gap: 10px; font-size: 14px; line-height: 1.55; align-items: flex-start; }
+  .q-item .mk {
+    flex: none; font-family: var(--font-num); font-weight: 800; font-size: 14px;
+    color: var(--age4); line-height: 1.5;
+  }
+  .q-item.spot {
+    grid-column: 1 / -1;
+    background: var(--age4-bg); color: var(--age4);
+    border-radius: 7px; padding: 11px 14px;
+    font-family: var(--font-display); font-weight: 700; font-size: 15px;
+  }
+  .q-item.spot .mk { color: var(--age4); }
+
+  /* ---------- Footer ---------- */
+  .foot {
+    display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px;
+    padding-top: 6px; border-top: 1px solid var(--hair);
+    font-size: 11.5px; color: var(--ink-faint);
+  }
+
+  /* ---------- Responsive ---------- */
+  @media (max-width: 720px) {
+    .ages { grid-template-columns: 1fr; }
+    .bg-strip { grid-template-columns: 1fr; }
+    .axis { grid-template-columns: 1fr; gap: 10px; }
+    .verdict, .qgrid, .aux { grid-template-columns: 1fr; }
+    .num { font-size: 54px; }
+  }
+  @media print {
+    body { background: #fff; padding: 0; }
+    .poster { box-shadow: none; border: none; max-width: none; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+</style>
+</head>
+<body>
+<main class="poster">
+
+  <!-- Header -->
+  <header class="head">
+    <span class="eyebrow">幼児教育実践学会 ポスター発表（草案）</span>
+    <h1>当番って、<span class="q">何のため？</span></h1>
+    <p class="subtitle">3・4・5歳児の当番活動を、担任のエピソードから問い直す</p>
+    <p class="method">各学年の担任がエピソードを持ち寄り、<b>対話を通して考察を深めた質的な記録</b>。結論を一つに絞るのではなく、「当番とは何か」という<b>問いが深まっていく過程</b>そのものを残した。</p>
+  </header>
+
+  <!-- Background -->
+  <section class="bg-strip">
+    <div class="fact">
+      <span class="k">背景 ①</span>
+      <p>「当番」は<span class="hi">日本独自の文化</span>らしく、海外にはあまり見られない。</p>
+    </div>
+    <div class="fact">
+      <span class="k">背景 ②</span>
+      <p>小学校では<span class="hi">「当番」（順番に行う責任）</span>と<span class="hi">「係」（より良くするための創意工夫）</span>が区別される。幼児期の当番は、どちらの芽？</p>
+    </div>
+  </section>
+
+  <!-- Age columns -->
+  <section>
+    <div class="sec-head" style="margin-bottom:16px;">
+      <h2>学年でたどる ── 実践のすがた</h2>
+      <p class="lead">色は学年をあらわす。この配色は以降のすべての図に共通する。</p>
+    </div>
+    <div class="ages">
+
+      <article class="age a3">
+        <div class="age-top">
+          <div class="num">3<span class="sai">歳</span></div>
+          <span class="tag">隊長さん</span>
+        </div>
+        <p class="stance">憧れ・自己実現から出会う</p>
+        <div class="field">
+          <span class="label">実践のすがた</span>
+          <p>「ちびっこ先生」の延長。憧れの存在とバッジ、3人一組。運動会・発表会で“見てもらう喜び”を味わってから1月に開始。</p>
+        </div>
+        <div class="field">
+          <span class="label">見えた育ち</span>
+          <p>見てもらえて嬉しい／自分の自信が友達へ目を向かせ、認め合いへ波及。</p>
+        </div>
+        <div class="field">
+          <span class="label">キーワード</span>
+          <div class="chips"><span>憧れ</span><span>自己実現</span><span>やりたいもの</span><span>出会い方</span></div>
+        </div>
+        <div class="risk"><span class="rl">危うさ</span><span>早すぎる「やらせ」は、苦手意識を年長まで残す。</span></div>
+      </article>
+
+      <article class="age a4">
+        <div class="age-top">
+          <div class="num">4<span class="sai">歳</span></div>
+          <span class="tag">お当番さん</span>
+        </div>
+        <p class="stance">「任される」か「やらされる」か</p>
+        <div class="field">
+          <span class="label">実践のすがた</span>
+          <p>隊長さんから丁寧に移行。前で名前や好きな物を発表し、靴の確認・カゴ運びなどの役割も。</p>
+        </div>
+        <div class="field">
+          <span class="label">見えた育ち</span>
+          <p>所属感が先、途中から責任の芽。友達の“ありがとう”が、苦手な子の転機に。</p>
+        </div>
+        <div class="field">
+          <span class="label">キーワード</span>
+          <div class="chips"><span>任される／やらされる</span><span>所属感→責任感</span><span>急ハンドル</span></div>
+        </div>
+        <div class="risk"><span class="rl">危うさ</span><span>できる子が目立ち、できない子との差。視線が重圧に変わる。</span></div>
+      </article>
+
+      <article class="age a5">
+        <div class="age-top">
+          <div class="num">5<span class="sai">歳</span></div>
+          <span class="tag">年長</span>
+        </div>
+        <p class="stance">自分たちで考える当番へ</p>
+        <div class="field">
+          <span class="label">実践のすがた</span>
+          <p>「前で発表」を見直し、役割をグループで分担。「自分たちで当番を考えよう」と問いかけから始める。</p>
+        </div>
+        <div class="field">
+          <span class="label">見えた育ち</span>
+          <p>人前が苦手でも役割で活躍。「明日は僕がやる」と自分から言う主体性。</p>
+        </div>
+        <div class="field">
+          <span class="label">キーワード</span>
+          <div class="chips"><span>自分たちで決める</span><span>当番と係</span><span>線引き</span><span>生活面の自立</span></div>
+        </div>
+        <div class="risk"><span class="rl">危うさ</span><span>園・担任の余力がないと、任せられる範囲は狭まる。</span></div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- 総合考察 -->
+  <section>
+    <div class="sec-head" style="margin-bottom:16px;">
+      <h2>総合考察 ── 発達で「当番の意味」はどう変わるか</h2>
+      <p class="lead">「何が変わるか」の記述から、「なぜ変わるのか」の解釈へ。3つの軸で読み解く。</p>
+    </div>
+    <div class="axes">
+
+      <div class="axis">
+        <div class="axis-name">
+          <span class="n">軸1 ｜ 社会形態</span>
+          <span class="d">4歳の“急ハンドル”の正体</span>
+        </div>
+        <div class="track">
+          <span class="stop s3">3人一緒</span>
+          <span class="arw">→</span>
+          <span class="stop s4">一人で立つ</span>
+          <span class="arw">→</span>
+          <span class="stop s5">役割を分担</span>
+        </div>
+      </div>
+
+      <div class="axis">
+        <div class="axis-name">
+          <span class="n">軸2 ｜ まなざし</span>
+          <span class="d">＝「いつから恥ずかしくなるのか」</span>
+        </div>
+        <div class="track">
+          <span class="stop s3">嬉しい</span>
+          <span class="arw">→</span>
+          <span class="stop s4">重圧</span>
+          <span class="arw">→</span>
+          <span class="stop s5">見られない役割へ</span>
+        </div>
+      </div>
+
+      <div class="axis">
+        <div class="axis-name">
+          <span class="n">軸3 ｜ 関心の輪</span>
+          <span class="d">当番が向かう先が外へ開く</span>
+        </div>
+        <div class="track">
+          <span class="stop s3">自分</span>
+          <span class="arw">→</span>
+          <span class="stop s4">友達</span>
+          <span class="arw">→</span>
+          <span class="stop s5">生活・場</span>
+        </div>
+      </div>
+
+    </div>
+    <div class="aux">
+      <div><b>承認の内在化</b>：外（先生・バッジ）→ 横（友達のありがとう）→ 内（自分たちで決めてやり切る攻略感）。感謝が4歳で自然に出ないのは、この途上だから。</div>
+      <div><b>当番と係は連続</b>：自己決定の割合（好きな物→今週は何にする→役割自体を決める）が学年で増える。当番の中に、係の芽が育つ。</div>
+    </div>
+  </section>
+
+  <!-- Conclusion -->
+  <section class="band">
+    <span class="kicker">結論</span>
+    <h2>発達が「当番の意味」を変える。だが、それを<em>喜び</em>にするか苦役にするかは、大人の設計しだい。</h2>
+    <div class="verdict">
+      <div class="vcard bad">
+        <span class="vt">苦役になるとき</span>
+        <p>大人の都合が、子どもの必然を上回ったとき。<br>（3歳＝早すぎるやらせ／4歳＝できる子とできない子の差／5歳＝余力不足）</p>
+      </div>
+      <div class="vcard good">
+        <span class="vt">喜びになるとき ──「任される感」の成立</span>
+        <ol>
+          <li>目的が見える</li>
+          <li>先生から離れて、自分たちでやれる</li>
+          <li>みんなと／憧れと、つながる</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Questions -->
+  <section class="ask">
+    <div class="sec-head">
+      <h2>これからの問い ── 来場者のみなさんへ</h2>
+      <p class="lead">私たちも答えは出しきれていません。一緒に考えさせてください。</p>
+    </div>
+    <div class="qgrid">
+      <div class="q-item"><span class="mk">Q1</span><span>なぜ幼児は人前に立ちたがり、いつから「恥ずかしい」に変わるのか？</span></div>
+      <div class="q-item"><span class="mk">Q2</span><span>4歳の当番は「当番」と呼ぶのがふさわしい？　別のネーミングの方がしっくりくる？</span></div>
+      <div class="q-item"><span class="mk">Q3</span><span>当番は、なくてもいい？　あるとしたら、何のために？</span></div>
+      <div class="q-item"><span class="mk">Q4</span><span>3・4歳に「自分たちで考えて」と振ったら、何が出てくる？</span></div>
+      <div class="q-item spot"><span class="mk">?</span><span>あなたの園の当番は ── 私たちと同じ？　それとも、違う？</span></div>
+    </div>
+  </section>
+
+  <footer class="foot">
+    <span>出典：第1回（3歳児）・第2回（4歳児）・第3回（5歳児）研究会記録</span>
+    <span>各学年の担任によるエピソード検討より</span>
+  </footer>
+
+</main>
+</body>
+</html>
