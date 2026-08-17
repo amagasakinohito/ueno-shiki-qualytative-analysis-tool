@@ -44,6 +44,17 @@ log = logging.getLogger("garoon")
 DEFAULT_MAX_CHARS = 10000
 
 
+# リクエストボディの項目名の候補。cybozu.dev の仕様書を直接確認できなかったため、
+# セットアップ時にこの順で実際に投稿を試し、通ったものを config.ini に記録する。
+# 失敗した候補は HTTP 400 で弾かれるだけなので、余計な書き込みは残らない。
+BODY_TEMPLATE_CANDIDATES = (
+    '{"text": "{text}"}',
+    '{"comment": {"text": "{text}"}}',
+    '{"body": "{text}"}',
+    '{"content": {"body": "{text}"}}',
+)
+
+
 class GaroonError(RuntimeError):
     """ガルーンへの接続・投稿に失敗したことを表す。"""
 
@@ -200,6 +211,30 @@ class GaroonClient:
     # ------------------------------------------------------------------
     # 疎通確認
     # ------------------------------------------------------------------
+
+    def detect_body_template(self, text: str) -> str:
+        """投稿が通るリクエストボディの形を、実際に試して突き止める。
+
+        ガルーンのバージョンによって項目名が違う可能性があるため、候補を順に
+        投稿してみて、成功したものを返す。失敗した候補はHTTP 400で弾かれるだけで
+        書き込みは残らないので、成功する1件だけがコメントとして投稿される。
+        """
+        errors = []
+        for candidate in BODY_TEMPLATE_CANDIDATES:
+            self.body_template = candidate
+            try:
+                self._post_once(self.subject, text)
+                return candidate
+            except GaroonError as exc:
+                message = str(exc)
+                # 認証・権限の問題なら、どの候補を試しても同じなので即座に諦める
+                if "HTTP 401" in message or "HTTP 403" in message or "接続できません" in message:
+                    raise
+                errors.append(f"  {candidate}\n    → {message.splitlines()[0]}")
+
+        raise GaroonError(
+            "どの形式でも投稿できませんでした。試した内容:\n" + "\n".join(errors)
+        )
 
     def check(self, probe_endpoint: str = "/g/api/v1/base/users?limit=1") -> str:
         """接続と認証だけを確認する。投稿は行わない。
