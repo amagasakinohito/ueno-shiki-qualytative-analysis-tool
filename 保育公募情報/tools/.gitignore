@@ -1,0 +1,8 @@
+# パスワードを含むためコミットしない
+config.ini
+
+# 巡回の状態（前回取得内容）と実行ログ
+state.json
+state.json.tmp
+*.log
+report_*.txt

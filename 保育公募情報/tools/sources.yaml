@@ -1,0 +1,220 @@
+# 巡回対象の定義
+#
+# 監視対象URL一覧.md と対応。ページを追加したいときはここに1エントリ足す。
+#
+#   city      市名
+#   category  区分（保育所 / 児童発達支援 / 学童保育 / 公設民営 / 全般）
+#   name      ページ名（レポートにそのまま出る）
+#   url       URL
+#   priority  high / normal。high はレポートの先頭にまとめて出す
+#   selector  （任意）本文領域のCSSセレクタ。指定するとノイズが減る
+
+defaults:
+  priority: normal
+
+sources:
+  # ------------------------------------------------------------------
+  # 西宮市
+  # ------------------------------------------------------------------
+  - city: 西宮市
+    category: 保育所
+    name: 保育施設の整備について
+    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/index.html
+    priority: high
+
+  - city: 西宮市
+    category: 保育所
+    name: 認可保育所 設置・運営事業者募集（用地確保型／賃貸物件型）
+    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/hoikujigyoushaboshuu.html
+    priority: high
+
+  - city: 西宮市
+    category: 保育所
+    name: 小規模保育事業の整備・運営事業者募集
+    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/syoukiboboshuu.html
+
+  - city: 西宮市
+    category: 保育所
+    name: 認可保育所 設置・運営事業者募集（林田町）※受付終了
+    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/koubo-hayashida.html
+
+  - city: 西宮市
+    category: 学童保育
+    name: 民設放課後児童クラブ 運営事業者募集（公募型プロポーザル）
+    url: https://www.nishi.or.jp/jigyoshajoho/keiyaku/nyusatsu/puropozarutou/proposalkobo/minsetsu.html
+    priority: high
+
+  - city: 西宮市
+    category: 全般
+    name: プロポーザル等公募情報
+    url: https://www.nishi.or.jp/jigyoshajoho/keiyaku/nyusatsu/puropozarutou/proposalkobo/index.html
+    priority: high
+
+  - city: 西宮市
+    category: 児童発達支援
+    name: 社会福祉施設等公募情報
+    url: https://www.nishi.or.jp/jigyoshajoho/shakaifukushihojin/shisetsu/index.html
+
+  - city: 西宮市
+    category: 公設民営
+    name: 指定管理者制度の導入状況
+    url: https://www.nishi.or.jp/shisei/gyoseikeiei/shiteikanrishaseido/donyujokyo.html
+
+  # ------------------------------------------------------------------
+  # 尼崎市
+  # ------------------------------------------------------------------
+  - city: 尼崎市
+    category: 保育所
+    name: 認可保育施設の公募等に係る情報について
+    url: https://www.city.amagasaki.hyogo.jp/sangyo/zigyousya/syakaihukusi/1006665/index.html
+    priority: high
+
+  - city: 尼崎市
+    category: 全般
+    name: 市関連業務の事業者募集
+    url: https://www.city.amagasaki.hyogo.jp/sangyo/zigyousya/co_bosyu/index.html
+    priority: high
+
+  - city: 尼崎市
+    category: 学童保育
+    name: 放課後児童健全育成事業を開始等される事業者の方へ
+    url: https://www.city.amagasaki.hyogo.jp/sangyo/zigyousya/syakaihukusi/1006666.html
+
+  # ------------------------------------------------------------------
+  # 芦屋市
+  # ------------------------------------------------------------------
+  - city: 芦屋市
+    category: 保育所
+    name: 教育・保育施設整備事業者等の募集
+    url: https://www.city.ashiya.lg.jp/kodomoseisaku/shinseido/jigyousyabosyuu.html
+    priority: high
+
+  - city: 芦屋市
+    category: 保育所
+    name: 保育所・認定こども園・小規模保育事業所等
+    url: https://www.city.ashiya.lg.jp/kodomo/hoikusho.html
+
+  # ------------------------------------------------------------------
+  # 宝塚市
+  # ------------------------------------------------------------------
+  - city: 宝塚市
+    category: 学童保育
+    name: 民間放課後児童クラブの運営事業者募集
+    url: https://www.city.takarazuka.hyogo.jp/1060680/1060699/1061569/1009267/1056861.html
+    priority: high
+
+  - city: 宝塚市
+    category: 全般
+    name: 募集情報（市全体）
+    url: https://www.city.takarazuka.hyogo.jp/boshu/
+    priority: high
+
+  - city: 宝塚市
+    category: 学童保育
+    name: 放課後児童クラブ（学童保育）
+    url: https://www.city.takarazuka.hyogo.jp/1060680/1060699/1061569/1009267/index.html
+
+  # ------------------------------------------------------------------
+  # 伊丹市
+  # ------------------------------------------------------------------
+  - city: 伊丹市
+    category: 保育所
+    name: 認可保育所及び小規模保育事業の施設設置・運営事業者の募集
+    url: https://www.city.itami.lg.jp/SOSIKI/KODOMO/HOIKU/bosyuu/index.html
+    priority: high
+
+  - city: 伊丹市
+    category: 保育所
+    name: 認可保育所設置及び運営事業者の募集（令和9年4月1日開設：阪急稲野駅周辺）
+    url: https://www.city.itami.lg.jp/SOSIKI/KODOMO/HOIKU/bosyuu/reiwa7nendo/45945.html
+    priority: high
+
+  # ------------------------------------------------------------------
+  # 大阪市
+  # ------------------------------------------------------------------
+  - city: 大阪市
+    category: 全般
+    name: こども青少年局 新着情報
+    url: https://www.city.osaka.lg.jp/kodomo/news/curr.html
+    priority: high
+
+  - city: 大阪市
+    category: 保育所
+    name: 令和8年度 保育施設等設置・運営事業者募集【全体案内】
+    url: https://www.city.osaka.lg.jp/kodomo/page/0000669006.html
+    priority: high
+
+  - city: 大阪市
+    category: 保育所
+    name: 令和8年度 認可保育所設置・運営法人募集
+    url: https://www.city.osaka.lg.jp/kodomo/page/0000668599.html
+    priority: high
+
+  - city: 大阪市
+    category: 保育所
+    name: 令和8年度 地域型保育事業設置・運営事業者募集
+    url: https://www.city.osaka.lg.jp/kodomo/page/0000666928.html
+    priority: high
+
+  - city: 大阪市
+    category: 保育所
+    name: 募集に係る応募書類等
+    url: https://www.city.osaka.lg.jp/kodomo/page/0000668600.html
+
+  - city: 大阪市
+    category: 公設民営
+    name: 令和10・11年度に民間移管する公立保育所の移管先法人募集
+    url: https://www.city.osaka.lg.jp/kodomo/page/0000679272.html
+    priority: high
+
+  - city: 大阪市
+    category: 公設民営
+    name: 指定管理者 全ての募集案件情報
+    url: https://www.city.osaka.lg.jp/sangyo/category/3049-8-2-0-0-0-0-0-0-0.html
+
+  - city: 大阪市
+    category: 全般
+    name: こども青少年局 入札・契約のお知らせ
+    url: https://www.city.osaka.lg.jp/sangyo/category/3047-9-16-1-0-0-0-0-0-0.html
+
+  - city: 大阪市
+    category: 児童発達支援
+    name: 児童発達支援センターについて（福祉局）
+    url: https://www.city.osaka.lg.jp/fukushi/page/0000651913.html
+
+  # ------------------------------------------------------------------
+  # 豊中市
+  # ------------------------------------------------------------------
+  - city: 豊中市
+    category: 保育所
+    name: 令和9年度(2027年度)整備 保育所・幼保連携型認定こども園 設置及び運営者募集
+    url: https://www.city.toyonaka.osaka.jp/kosodate/hoikusho/hoikusyo_seibi/seibi_koubo.html
+    priority: high
+
+  - city: 豊中市
+    category: 保育所
+    name: 保育所等の整備について（整備事業者公募等）
+    url: https://www.city.toyonaka.osaka.jp/kosodate/hoikusho/hoikusyo_seibi/index.html
+    priority: high
+
+  - city: 豊中市
+    category: 全般
+    name: 公募型プロポーザル 現在実施中の案件
+    url: https://www.city.toyonaka.osaka.jp/jigyosya/proposal/jisshichu/index.html
+    priority: high
+
+  - city: 豊中市
+    category: 全般
+    name: プロポーザル案件（こども関係）
+    url: https://www.city.toyonaka.osaka.jp/kosodate/jigyosha/proposal/index.html
+    priority: high
+
+  - city: 豊中市
+    category: 全般
+    name: 公募などの募集（子育て）
+    url: https://www.city.toyonaka.osaka.jp/kosodate/kosodatetorikumi/koubo_boshu/index.html
+
+  - city: 豊中市
+    category: 児童発達支援
+    name: 豊中市立児童発達支援センター
+    url: https://www.city.toyonaka.osaka.jp/shisetsu/kodomo_shounen/a00121002008610.html
