@@ -260,8 +260,15 @@ class GaroonClient:
         except requests.RequestException as exc:
             raise GaroonError(f"接続できませんでした: {exc}") from exc
 
-        if res.status_code == 401:
-            raise GaroonError("認証に失敗しました。login / password をご確認ください。")
+        # ガルーンは認証失敗を401ではなく520で返すことがあるため、本文でも判定する
+        if res.status_code == 401 or "SLASH_LO02" in res.text or "Invalid login name" in res.text:
+            raise GaroonError(
+                "ログイン名かパスワードが違います。\n"
+                "  ・ログイン名は、ブラウザのガルーンのログイン画面で入力しているものと\n"
+                "    同じにしてください（表示名ではなく、メールアドレスのこともあります）\n"
+                "  ・パスワードを変更した場合は、新しいものを入力してください\n"
+                "  ・二要素認証を有効にしている場合、この方式ではログインできません"
+            )
         if res.status_code >= 400:
             raise GaroonError(f"HTTP {res.status_code}: {res.text[:300]}")
         return f"接続・認証に成功しました（HTTP {res.status_code}）"

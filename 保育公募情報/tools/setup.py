@@ -171,8 +171,8 @@ def check_garoon(config: configparser.ConfigParser) -> None:
     except GaroonError as exc:
         message = str(exc)
         hint = ""
-        if "認証に失敗" in message or "401" in message:
-            hint = "ログイン名かパスワードが違います。もう一度 python setup.py を実行してください。"
+        if "ログイン名かパスワード" in message:
+            hint = "もう一度 python setup.py を実行して、入力し直してください。"
         elif "403" in message:
             hint = (
                 "接続はできましたが拒否されました。\n"
