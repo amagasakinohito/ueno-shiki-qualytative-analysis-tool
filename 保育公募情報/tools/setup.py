@@ -30,6 +30,15 @@ HERE = Path(__file__).resolve().parent
 CONFIG = HERE / "config.ini"
 EXAMPLE = HERE / "config.example.ini"
 
+# Windowsのコンソールは既定が日本語コードページのため、日本語の表示に失敗して
+# 途中で落ちることがある。UTF-8に切り替えて防ぐ。
+if sys.platform == "win32":
+    for stream in (sys.stdout, sys.stderr):
+        try:
+            stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, OSError):
+            pass
+
 TASK_NAME = "保育公募情報巡回"
 DEFAULT_TIME = "08:00"
 

@@ -45,6 +45,15 @@ JST = timezone(timedelta(hours=9))
 HERE = Path(__file__).resolve().parent
 STATE_VERSION = 1
 
+# Windowsのコンソールは既定が日本語コードページのため、日本語の表示に失敗して
+# 途中で落ちることがある。UTF-8に切り替えて防ぐ。
+if sys.platform == "win32":
+    for _stream in (sys.stdout, sys.stderr):
+        try:
+            _stream.reconfigure(encoding="utf-8", errors="replace")
+        except (AttributeError, OSError):
+            pass
+
 # 公募に関係する行・リンクだけを拾うためのキーワード。
 # ここを広げるとノイズが増え、狭めると取りこぼす。運用しながら調整する。
 KEYWORDS = (
