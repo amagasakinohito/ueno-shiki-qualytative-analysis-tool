@@ -63,8 +63,23 @@ Windowsの場合、インストール画面の一番下にある
 | 今すぐ巡回して結果を画面で見る（投稿しない） | `python watch.py --dry-run` |
 | 今すぐ巡回して投稿する | `python watch.py` |
 | 1つの市だけ試す | `python watch.py --dry-run --only 大阪市` |
+| 実行時刻を変える（Windows） | `Set-ScheduledTask -TaskName "保育公募情報巡回" -Trigger (New-ScheduledTaskTrigger -Daily -At 9:00)` |
+| 次回いつ動くか見る（Windows） | `Get-ScheduledTask -TaskName "保育公募情報巡回" \| Get-ScheduledTaskInfo \| Select NextRunTime` |
 | 自動実行をやめる（Windows） | `schtasks /Delete /TN "保育公募情報巡回" /F` |
 | 自動実行をやめる（Mac/Linux） | `crontab -e` でその行を削除 |
+
+Windowsで実行時刻を変えるときは、上の `Set-ScheduledTask` を使ってください。
+`schtasks /Change` でも変えられますが、そちらはWindowsのログインパスワードの
+入力を求められます（ガルーンのパスワードではありません）。
+
+電源が入っていない日を取りこぼしたくない場合は、次を1度実行しておくと、
+指定時刻を過ぎていても次に起動したときに巡回します。
+
+```powershell
+$t = Get-ScheduledTask -TaskName "保育公募情報巡回"
+$t.Settings.StartWhenAvailable = $true
+Set-ScheduledTask -InputObject $t
+```
 
 監視しているページの一覧と、なぜそのページを見るのかは
 [../監視対象URL一覧.md](../監視対象URL一覧.md) にまとめています。
