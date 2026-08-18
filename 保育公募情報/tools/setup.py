@@ -10,7 +10,7 @@
     3. ガルーンに接続できるか確認
     4. 投稿できる形式を自動判定してテスト投稿
     5. 各市サイトを巡回できるか確認し、現状を基準として記録
-    6. 毎朝8時の自動実行を登録
+    6. 毎朝9時の自動実行を登録
 
 途中で失敗しても、原因と次にやることを日本語で表示します。
 """
@@ -40,7 +40,7 @@ if sys.platform == "win32":
             pass
 
 TASK_NAME = "保育公募情報巡回"
-DEFAULT_TIME = "08:00"
+DEFAULT_TIME = "09:00"
 
 
 # ---------------------------------------------------------------------------
@@ -271,7 +271,7 @@ def crawl_baseline() -> None:
 
 
 def register_schedule() -> None:
-    print("  毎朝8時に自動で巡回するよう登録します。")
+    print("  毎朝9時に自動で巡回するよう登録します。")
     if not ask_yes("登録しますか？"):
         warn("スキップしました。あとで python setup.py を実行すれば登録できます。")
         return
@@ -292,7 +292,7 @@ def register_schedule() -> None:
         )
         if result.returncode != 0:
             warn("自動登録に失敗しました。手動で登録してください。")
-            print("    タスクスケジューラ →「基本タスクの作成」→ 毎日 8:00 →")
+            print("    タスクスケジューラ →「基本タスクの作成」→ 毎日 9:00 →")
             print(f"    プログラムの開始 → {bat}")
             print(f"    （エラー: {result.stderr.strip()[:200]}）")
             return
@@ -300,7 +300,7 @@ def register_schedule() -> None:
         print(f"    解除したいときは: schtasks /Delete /TN \"{TASK_NAME}\" /F")
     else:
         sh = HERE / "run_daily.sh"
-        line = f"0 8 * * * {sh} >> {HERE / 'watch.log'} 2>&1"
+        line = f"0 9 * * * {sh} >> {HERE / 'watch.log'} 2>&1"
         current = subprocess.run(["crontab", "-l"], capture_output=True, text=True)
         existing = current.stdout if current.returncode == 0 else ""
         if str(sh) in existing:
@@ -352,7 +352,7 @@ def main() -> int:
     print("  完了しました")
     print("=" * 60)
     print()
-    print("  明日の朝8時から、新しい公募情報があれば自動で投稿されます。")
+    print("  明日の朝9時から、新しい公募情報があれば自動で投稿されます。")
     print("  変更がない日は投稿しません。")
     print()
     print("  今すぐ試したいとき : python watch.py --dry-run")
