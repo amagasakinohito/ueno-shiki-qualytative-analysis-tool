@@ -4,14 +4,31 @@
 
 ## 使い始め方
 
-Python がまだ入っていなければ [python.org](https://www.python.org/downloads/) から入れてください
-（Windowsのインストール画面では **「Add Python to PATH」にチェック**を入れてください）。
+### 手順は3つだけです
 
-あとは、このフォルダで次の1行を実行するだけです。
+**1. Python を入れる**（すでに入っていれば飛ばしてください）
 
-```
-python setup.py
-```
+[python.org/downloads](https://www.python.org/downloads/) からダウンロードして実行。
+Windowsの場合、インストール画面の一番下にある
+**「Add Python to PATH」に必ずチェック**を入れてください。
+
+**2. このフォルダ一式をPCにダウンロードする**
+
+[ZIPでダウンロード](https://github.com/amagasakinohito/ueno-shiki-qualytative-analysis-tool/archive/refs/heads/claude/childcare-recruitment-info-pdvtec.zip)
+して展開し、`保育公募情報/tools` フォルダを開きます。
+
+**3. ダブルクリックする**
+
+| OS | ダブルクリックするファイル |
+|---|---|
+| Windows | **`セットアップ.bat`** |
+| Mac | **`セットアップ.command`** |
+
+（Macで「開発元が未確認」と出たら、右クリック →「開く」→「開く」）
+
+ターミナルを使う場合は、このフォルダで `python setup.py` でも同じです。
+
+---
 
 聞かれるのは**ガルーンのログイン名とパスワードだけ**です。残りは全部自動でやります。
 
