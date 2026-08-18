@@ -122,6 +122,42 @@ def install_requirements() -> None:
     ok("必要なライブラリはそろっています")
 
 
+def read_password() -> str:
+    """パスワードを読み取る。
+
+    通常は入力を伏せて受け取るが、端末によっては伏せる仕組みが働かず
+    入力を受け付けられないことがある。その場合は、画面に表示される形での
+    入力に切り替えられるようにしておく。
+    """
+    print("  パスワードを入力してください。")
+    print("  ※打っても画面には何も表示されませんが、入力はされています。")
+    print("    打ち終わったら Enter を押してください。")
+
+    for attempt in range(3):
+        try:
+            password = getpass.getpass("  パスワード: ")
+        except Exception:
+            password = ""
+        if password:
+            return password
+
+        if attempt == 0:
+            print()
+            warn("入力が受け取れませんでした。")
+        if ask_yes("画面に表示される形で入力しますか？（周囲にご注意ください）", default=True):
+            while True:
+                password = input("  パスワード（表示されます）: ").strip()
+                if password:
+                    return password
+
+    fail(
+        "パスワードを読み取れませんでした。\n"
+        "config.ini をテキストエディタで開き、password = の行に直接書いてから、\n"
+        "もう一度 setup.py を実行して「作り直しますか？」に n と答えてください。"
+    )
+    return ""  # fail() で終了するのでここには来ない
+
+
 def create_config() -> configparser.ConfigParser:
     if CONFIG.exists():
         print(f"  設定ファイルが既にあります: {CONFIG.name}")
@@ -139,9 +175,7 @@ def create_config() -> configparser.ConfigParser:
     login = ""
     while not login:
         login = input("  ガルーンのログイン名: ").strip()
-    password = ""
-    while not password:
-        password = getpass.getpass("  パスワード（入力は表示されません）: ")
+    password = read_password()
 
     shutil.copy(EXAMPLE, CONFIG)
     config = configparser.ConfigParser()
