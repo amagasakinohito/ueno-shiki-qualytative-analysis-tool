@@ -16,27 +16,20 @@ sources:
   # ------------------------------------------------------------------
   # 西宮市
   # ------------------------------------------------------------------
+  # 個別の募集ページはファイル名が変わるため直接指定しない。
+  # 「保育所」トップから整備・募集ページへリンクが張られるので、
+  # そのリンクの増減で新着を検知する。
   - city: 西宮市
     category: 保育所
-    name: 保育施設の整備について
-    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/index.html
+    name: 保育所（保育施設の整備・事業者募集の入口）
+    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/index.html
     priority: high
 
   - city: 西宮市
     category: 保育所
-    name: 認可保育所 設置・運営事業者募集（用地確保型／賃貸物件型）
-    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/hoikujigyoushaboshuu.html
+    name: 保育こども園課
+    url: https://www.nishi.or.jp/soshiki/01190032/0129003230/013000323011/index.html
     priority: high
-
-  - city: 西宮市
-    category: 保育所
-    name: 小規模保育事業の整備・運営事業者募集
-    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/syoukiboboshuu.html
-
-  - city: 西宮市
-    category: 保育所
-    name: 認可保育所 設置・運営事業者募集（林田町）※受付終了
-    url: https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/koubo-hayashida.html
 
   - city: 西宮市
     category: 学童保育
@@ -49,6 +42,11 @@ sources:
     name: プロポーザル等公募情報
     url: https://www.nishi.or.jp/jigyoshajoho/keiyaku/nyusatsu/puropozarutou/proposalkobo/index.html
     priority: high
+
+  - city: 西宮市
+    category: 全般
+    name: プロポーザル等結果公表
+    url: https://www.nishi.or.jp/jigyoshajoho/keiyaku/nyusatsu/puropozarutou/proposalkekka/index.html
 
   - city: 西宮市
     category: 児童発達支援
@@ -103,16 +101,22 @@ sources:
     url: https://www.city.takarazuka.hyogo.jp/1060680/1060699/1061569/1009267/1056861.html
     priority: high
 
+  # 末尾の index.html を省くと404になるため、必ず付けること
   - city: 宝塚市
     category: 全般
     name: 募集情報（市全体）
-    url: https://www.city.takarazuka.hyogo.jp/boshu/
+    url: https://www.city.takarazuka.hyogo.jp/boshu/index.html
     priority: high
 
   - city: 宝塚市
     category: 学童保育
     name: 放課後児童クラブ（学童保育）
     url: https://www.city.takarazuka.hyogo.jp/1060680/1060699/1061569/1009267/index.html
+
+  - city: 宝塚市
+    category: 保育所
+    name: 保育所・認定こども園
+    url: https://www.city.takarazuka.hyogo.jp/1060680/1060698/1061552/1061560/gakkoshisetsu/1000105/index.html
 
   # ------------------------------------------------------------------
   # 伊丹市

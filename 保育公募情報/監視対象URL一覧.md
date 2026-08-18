@@ -10,9 +10,16 @@
 
 | | 区分 | ページ | URL |
 |---|---|---|---|
-| ◎ | 保育所 | 保育施設の整備について（整備事業者公募の親ページ） | https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/index.html |
-| ◎ | 保育所 | 認可保育所を設置・運営する事業者を募集します（用地確保型／賃貸物件型） | https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/hoikujigyoushaboshuu.html |
-| ◎ | 保育所 | 小規模保育事業の整備・運営事業者を募集します | https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/syoukiboboshuu.html |
+| ◎ | 保育所 | 保育所（保育施設の整備・事業者募集の入口） | https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/index.html |
+| ◎ | 保育所 | 保育こども園課 | https://www.nishi.or.jp/soshiki/01190032/0129003230/013000323011/index.html |
+| ○ | 全般 | プロポーザル等結果公表 | https://www.nishi.or.jp/jigyoshajoho/keiyaku/nyusatsu/puropozarutou/proposalkekka/index.html |
+
+> **［2026-08-18 修正］** `hoiku_seibi/` 配下の個別ページ
+> （`index.html` / `hoikujigyoushaboshuu.html` / `syoukiboboshuu.html` / `koubo-hayashida.html`）
+> はすべて404になっていた。フォルダ自体は存在するがファイル名が変わったため、
+> **個別ページを直接指定するのをやめ、「保育所」トップからのリンク増減で検知する方式に変更した。**
+> 個別ページを指定し直したい場合は、`https://www.nishi.or.jp/kosodate/hoikujo/hoikujo/hoiku_seibi/`
+> がディレクトリ一覧を返すので、そこで現在のファイル名を確認できる。
 | ◎ | 学童保育 | 放課後児童健全育成事業に係る公募型プロポーザル（民設放課後児童クラブ運営事業者募集） | https://www.nishi.or.jp/jigyoshajoho/keiyaku/nyusatsu/puropozarutou/proposalkobo/minsetsu.html |
 | ◎ | 全般 | プロポーザル等公募情報（公募案件の一覧） | https://www.nishi.or.jp/jigyoshajoho/keiyaku/nyusatsu/puropozarutou/proposalkobo/index.html |
 | ○ | 学童保育 | 民設放課後児童クラブの利用について | https://www.nishi.or.jp/kosodate/hoikujo/shogakko/jidocenter/ikusei_minsetu.html |
@@ -62,8 +69,11 @@
 |---|---|---|---|
 | ◎ | 学童保育 | 民間放課後児童クラブ（学童保育）の運営事業者募集 | https://www.city.takarazuka.hyogo.jp/1060680/1060699/1061569/1009267/1056861.html |
 | ○ | 学童保育 | 放課後児童クラブ（学童保育） | https://www.city.takarazuka.hyogo.jp/1060680/1060699/1061569/1009267/index.html |
-| ◎ | 全般 | 募集情報（市全体の募集一覧） | https://www.city.takarazuka.hyogo.jp/boshu/ |
+| ◎ | 全般 | 募集情報（市全体の募集一覧） | https://www.city.takarazuka.hyogo.jp/boshu/index.html |
 | ○ | 保育所 | 保育所・認定こども園 | https://www.city.takarazuka.hyogo.jp/1060680/1060698/1061552/1061560/gakkoshisetsu/1000105/index.html |
+
+> **［2026-08-18 修正］** 宝塚市は末尾の `index.html` を省くと404になる。
+> `/boshu/` ではなく `/boshu/index.html` と書くこと。
 
 ---
 
